@@ -32,3 +32,11 @@ bin/
 out/
 build/
 target/
+
+# Ignore all compiled Java class files
+**/*.class
+
+# Optional: ignore compiled jars and logs
+*.jar
+*.log
+
