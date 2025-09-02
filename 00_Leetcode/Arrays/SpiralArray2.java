@@ -1,39 +1,37 @@
-// print spiral array in linear way
+// given n, print spiral array in 2d, from 1 - n^2
+// eg, n = 6, 1 - 36 in spiral
 
-public class SpiralArrayPrint {
+public class SpiralArray2 {
     public static void main(String[] args) {
-        int[][] spiralMatrix = {
-                { 1, 2, 3, 4, 5, 6 },
-                { 20, 21, 22, 23, 24, 7 },
-                { 19, 32, 33, 34, 25, 8 },
-                { 18, 31, 36, 35, 26, 9 },
-                { 17, 30, 29, 28, 27, 10 },
-                { 16, 15, 14, 13, 12, 11 }
-        };
-        
-        spiral(spiralMatrix);
+        int[][] array = spiralTwo(6);
+        for (int[] row : array) {
+            for (int num : row) {
+                System.out.printf("%3d", num); // 3 spaces for alignment
+            }
+            System.out.println();
+        }
     }
 
-    static void spiral(int[][] nums) {
-        int r = nums.length - 1;
-        int c = nums[r].length - 1;
-
-        // four pointers - Top, Bottom, Right, Left
+    static int[][] spiralTwo(int n) {
         int top = 0;
-        int bottom = r;
+        int bottom = n - 1;
         int left = 0;
-        int right = c;
+        int right = n - 1;
+
+        int[][] nums = new int[n][n];
+        int val = 1;
 
         while (top <= bottom && left <= right) {
             // 1st from left to right, top is constant
             for (int i = left; i <= right; i++) {
-                System.out.print(nums[top][i] + " ");
+
+                nums[top][i] = val++;
             }
             top++;
 
             // 2nd from top to bottom, right is constant
             for (int i = top; i <= bottom; i++) {
-                System.out.print(nums[i][right] + " ");
+                nums[i][right] = val++;
             }
             right--;
 
@@ -41,7 +39,7 @@ public class SpiralArrayPrint {
             // only if top<=bottom
             if (top <= bottom) {
                 for (int i = right; i >= left; i--) {
-                    System.out.print(nums[bottom][i] + " ");
+                    nums[bottom][i] = val++;
                 }
                 bottom--;
             }
@@ -50,10 +48,12 @@ public class SpiralArrayPrint {
             // only if left<=right
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
-                    System.out.print(nums[i][left] + " ");
+                    nums[i][left] = val++;
                 }
                 left++;
             }
         }
+
+        return nums;
     }
 }

@@ -35,17 +35,17 @@ class LL {
         size += 1;
     }
     
-    private void reverseList(Node node) {  // not in place, uses recursion
-        if(node == tail) {
-            head = tail;
-            return;
-        }
-        reverseList(node.next);
+    // private void reverseList(Node node) {  // not in place, uses recursion
+    //     if(node == tail) {
+    //         head = tail;
+    //         return;
+    //     }
+    //     reverseList(node.next);
 
-        tail.next = node;
-        tail = node;
-        tail.next = null;
-    }
+    //     tail.next = node;
+    //     tail = node;
+    //     tail.next = null;
+    // }
 
     public void reverse() {  // this is in place reversal
         if(size < 2) {
@@ -82,10 +82,10 @@ class LL {
         private int value;
         private Node next;
 
-        public Node(int value, Node next) {
-            this.value = value;
-            this.next = next;
-        }
+        // public Node(int value, Node next) {
+        //     this.value = value;
+        //     this.next = next;
+        // }
 
         public Node(int value) { // single-argument constructor
             this.value = value;
