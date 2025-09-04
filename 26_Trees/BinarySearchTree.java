@@ -6,7 +6,15 @@ public class BinarySearchTree {
         BST tree = new BST();
 
         tree.populate(array);
-        tree.display();
+        // tree.display();
+        System.out.println("Pre order traversal - N - L - R");
+        tree.preOrder();
+        System.out.println();
+        System.out.println("In order traversal - L - N - R");
+        tree.inOrder();
+        System.out.println();
+        System.out.println("Post order traversal - L - R - N");
+        tree.postOrder();
     }
 }
 
@@ -98,4 +106,40 @@ class BST {
             this.insertNode(nums[i]);
         }
     }
+
+
+    //Pre-order N - L - R
+    public void preOrder() {
+        preOrder(root);
+    } 
+    private void preOrder(Node node) {
+        if(node == null) return;
+
+        System.out.print(node.value + " ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    // in order - L - N - R
+    public void inOrder() {
+        inOrder(root);
+    }
+    private void inOrder(Node node) {
+        if(node == null) return;
+        preOrder(node.left);
+        System.out.print(node.value + " ");
+        preOrder(node.right);
+    }
+
+    // post Order L - R - N
+    public void postOrder() {
+        postOrder(root);
+    }
+    private void postOrder(Node node) {
+        if(node == null) return;
+        preOrder(node.left);
+        preOrder(node.right);
+        System.out.print(node.value + " ");
+    }
+
 }
